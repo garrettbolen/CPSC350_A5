@@ -51,3 +51,7 @@ void Rollback::undoChange(Transaction tran){
     cout << "Could not undo." << endl;
   }
 }
+
+void Rollback::addTransaction(Transaction tran){
+  stack->push(tran);
+}

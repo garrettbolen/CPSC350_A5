@@ -16,4 +16,6 @@ public:
   void undo();
   void undoAddDelete(Transaction tran);
   void undoChange(Transaction tran);
+  void addTransaction(Transaction tran);
+  
 };
