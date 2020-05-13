@@ -30,7 +30,7 @@ int Student::getAdvisor(){
 }
 
 //print
-void Student::printStudent(){
+void Student::printInfo(){
   cout << "Student name: " << name << ", ID: " << idNum << ", level: " << level << ", Major: " << major << ", GPA: " << gpa << ", Advisor ID: ";
 
   // check if advisor exists

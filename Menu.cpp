@@ -4,7 +4,7 @@ using namespace std;
 Menu::Menu(){
   masterFaculty = new BST<Faculty>();
   masterStudent = new BST<Student>();
-  history = new Rollback;
+  history = new Rollback(masterStudent, masterFaculty);
   running = true;
 }
 
@@ -19,17 +19,15 @@ void Menu::run(){
 
   //else if statements for choice
   if(choice == 1){
-    masterStudent->printTree();
+    masterStudent->printTree(masterStudent->root);
   } else if(choice == 2){
-    masterFaculty->printTree(masterFaculty->getRoot());
+    masterFaculty->printTree(masterFaculty->root);
   } else if(choice == 3 || choice == 5){
     cout << "Enter the student ID: ";
     cin >> someID;
-    masterStudent->search(someID, choice);
   } else if (choice == 4 || choice == 6){
     cout << "Enter the faculty ID: ";
     cin >> someID;
-    masterFaculty->search(someID, choice);
   } else if(choice == 14){
     running = false;
   }

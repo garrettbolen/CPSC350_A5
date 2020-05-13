@@ -22,5 +22,5 @@ template <typename type> class DoublyLinkedList{
     ListNode<type>* front;
     ListNode<type>* back;
     unsigned int size;
-    //void printList();
+    void printList();
 };

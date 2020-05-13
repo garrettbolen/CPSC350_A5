@@ -19,13 +19,13 @@ template <typename type> bool DoublyLinkedList<type>::isEmpty(){
   return (size == 0);
 }
 
-// template <typename type> void DoublyLinkedList<type>::printList(){
-//   ListNode<type>* curr = front;
-//   while(curr != NULL){
-//     cout << curr->data << endl;
-//     curr = curr->next;
-//   }
-// }
+template <typename type> void DoublyLinkedList<type>::printList(){
+  ListNode<type>* curr = front;
+  while(curr != NULL){
+    cout << curr->data << " ";
+    curr = curr->next;
+  }
+}
 
 template <typename type> void DoublyLinkedList<type>::insertFront(type d){
   ListNode<type>* node = new ListNode<type>(d);
@@ -138,6 +138,5 @@ template <typename type> type DoublyLinkedList<type>::peek(){
   return front->data;
 }
 
-//This ensures a student and int DoublyLinkedList will be supported
-template class DoublyLinkedList<Student>;
+//This ensures an int DoublyLinkedList will be supported
 template class DoublyLinkedList<int>;

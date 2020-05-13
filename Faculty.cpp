@@ -18,17 +18,8 @@ Faculty::~Faculty(){
 }
 
 
-void Faculty::printFaculty(){
-  cout << "Faculty Name: " << name << ", ID: " << idNum << ", Level: " << level << ", Deparment: " << department << "." << endl;
-  // print advisees
+void Faculty::printInfo(){
+  cout << "Faculty Name: " << name << ", ID: " << idNum << ", Level: " << level << ", Deparment: " << department << ", Advisees: ";
+  students->printList();
+  cout << endl;
 }
-
-// void Faculty::printAdvisees(){
-//   if(numAdvisees = 0){
-//     cout << "Advisor has no advisees." << endl;
-//   } else {
-//     for(int i = 0; i < maxArraySize; ++i){
-//       //if
-//     }
-//   }
-// }

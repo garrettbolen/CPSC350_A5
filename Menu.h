@@ -17,7 +17,9 @@ public:
 
   BST<Faculty>* masterFaculty;
   BST<Student>* masterStudent;
+  Rollback* history;
 
+  bool running;
   int choice;
   int someID;
 

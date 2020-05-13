@@ -13,7 +13,7 @@ public:
 
   int getID();
   void setID(int idNum);
-
+protected:
   int idNum;
   string name;
   string level;

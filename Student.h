@@ -18,5 +18,5 @@ public:
 
   void setAdvisor(int advisorID);
 
-  void printStudent();
+  void printInfo();
 };

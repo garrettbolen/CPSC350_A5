@@ -9,8 +9,7 @@ public:
   Faculty(string n, int id, string l, string d);
   ~Faculty();
 
-  void printFaculty();
-  void printAdvisees();
+  void printInfo();
 
   void addAdvisee(int idNum);
   void removeAdvisee(int idNum);
