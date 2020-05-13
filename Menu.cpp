@@ -44,6 +44,14 @@ void Menu::run(){
       cout << endl;
       curr = curr->next;
     }
+  }else if(choice == 8){
+    cout << "To delete a student, enter the student's ID: ";
+    cin >> someID;
+    masterStudent->deleteNode(someID);
+  } else if(choice == 10){
+    cout << "To delete a faculty member, enter their ID: ";
+    cin >> someID;
+    masterFaculty->deleteNode(someID);
   } else if(choice == 14){
     running = false;
   }
