@@ -23,3 +23,7 @@ void Faculty::printInfo(){
   students->printList();
   cout << endl;
 }
+
+void Faculty::printAdvisees(){
+  
+}

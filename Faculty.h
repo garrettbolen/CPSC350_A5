@@ -10,6 +10,7 @@ public:
   ~Faculty();
 
   void printInfo();
+  void printAdvisees();
 
   void addAdvisee(int idNum);
   void removeAdvisee(int idNum);

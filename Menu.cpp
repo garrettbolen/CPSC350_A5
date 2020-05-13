@@ -22,12 +22,28 @@ void Menu::run(){
     masterStudent->printTree(masterStudent->root);
   } else if(choice == 2){
     masterFaculty->printTree(masterFaculty->root);
-  } else if(choice == 3 || choice == 5){
+  } else if(choice == 3){
     cout << "Enter the student ID: ";
     cin >> someID;
-  } else if (choice == 4 || choice == 6){
+    masterStudent->get(someID)->data.printInfo();
+  } else if (choice == 4){
     cout << "Enter the faculty ID: ";
     cin >> someID;
+    masterFaculty->get(someID)->data.printInfo();
+  } else if(choice == 5){
+    cout << "Enter the student ID: ";
+    cin >> someID;
+    int fid = masterStudent->get(someID)->data.advisorID;
+    masterFaculty->get(fid)->data.printInfo();
+  } else if(choice == 6){
+    cout << "Enter the faculty ID: ";
+    cin >> someID;
+    ListNode<int>* curr = masterFaculty->get(someID)->data.students->front;
+    while(curr != NULL){
+      masterStudent->get(curr->data)->data.printInfo();
+      cout << endl;
+      curr = curr->next;
+    }
   } else if(choice == 14){
     running = false;
   }
