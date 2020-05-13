@@ -4,23 +4,27 @@ Transaction::Transaction(){
 
 }
 
-Transaction::Transaction(string s, BST<Student>* tree){
+Transaction::Transaction(string s, string p, BST<Student>* tree){
   type = s;
+  person = p;
   studTree = new BST<Student>();
   studTree->copyTree(tree->root);
 }
 
-Transaction::Transaction(string s, BST<Faculty>* tree){
+Transaction::Transaction(string s, string p, BST<Faculty>* tree){
   type = s;
+  person = p;
   facTree = new BST<Faculty>();
   facTree->copyTree(tree->root);
 }
 
-Transaction::Transaction(string s, int id){
+Transaction::Transaction(string s, string p, int sid, int fid){
   type = s;
-  oldID = id;
+  person = p;
+  studID = sid;
+  facID = fid;
 }
 
 Transaction::~Transaction(){
-  
+
 }

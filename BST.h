@@ -9,6 +9,7 @@ public:
 
   void insert(int k, type value);
   bool search(int k);
+  TreeNode<type>* get(int k);
   bool deleteNode(int k);
 
   bool isEmpty();

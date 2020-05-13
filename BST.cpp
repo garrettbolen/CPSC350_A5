@@ -97,6 +97,25 @@ template <typename type> bool BST<type>::search(int k){
   return true; //found value
 }
 
+template <typename type> TreeNode<type>* BST<type>::get(int k){
+  if(isEmpty() || !search(k)){
+    TreeNode<type>* null;
+    return null;
+  }
+  else{
+    //not an empty Tree
+    TreeNode<type>* curr = root;
+
+    while(curr->key != k){
+      if(k < curr->key)
+        curr = curr->left;
+      else
+        curr = curr->right;
+    }
+    return curr; //found value
+  }
+}
+
 template <typename type> bool BST<type>::deleteNode(int k){
   if(isEmpty())
     return false;
