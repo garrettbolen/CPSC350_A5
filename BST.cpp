@@ -19,8 +19,6 @@ template <> void BST<Student>::printTree(TreeNode<Student>* node){
   if(node == NULL)
     return;
   printTree(node->left);
-  // cout << "Name: " << node->data.name << " ID: " << node->data.idNum << " Level: " << node->data.level
-  // << " Major: " << node->data.major << " GPA: " << node->data.gpa << " Advisor ID: " << node->data.advisorID << endl;
   node->data.printInfo();
   printTree(node->right);
 }
@@ -29,9 +27,6 @@ template <> void BST<Faculty>::printTree(TreeNode<Faculty>* node){
   if(node == NULL)
     return;
   printTree(node->left);
-  // cout << "Name: " << node->data.name << " ID: " << node->data.idNum << " Level: " << node->data.level
-  // << " Department: " << node->data.department << " Advisees: ";
-  // node->data.students->printList();
   node->data.printInfo();
   cout << endl;
   printTree(node->right);
