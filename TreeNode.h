@@ -1,4 +1,6 @@
 #include <iostream>
+#include "Student.h"
+#include "Faculty.h"
 using namespace std;
 #pragma once
 

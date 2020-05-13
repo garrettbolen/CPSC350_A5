@@ -1,9 +1,10 @@
 #include "Person.h"
 #include "DoublyLinkedList.h"
-//#include " "
-#include<iostream>
+
+#pragma once
 
 class Faculty : Person{
+public:
   Faculty();
   Faculty(string n, int id, string l, string d);
   ~Faculty();

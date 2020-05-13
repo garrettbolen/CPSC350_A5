@@ -1,6 +1,6 @@
 #include "Person.h"
-#include <iostream>
-using namespace std;
+
+#pragma once
 
 class Student : Person {
 public:

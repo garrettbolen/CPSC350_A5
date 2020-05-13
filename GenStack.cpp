@@ -1,5 +1,4 @@
 #include "GenStack.h"
-using namespace std;
 
 template<class T>
 GenStack<T>::GenStack(){
@@ -54,7 +53,8 @@ T GenStack<T>::pop(){
   } else {
     cout << "Stack empty." << endl;
   }
-  return 0;
+  T null;
+  return null;
 }
 
 template<class T>
@@ -71,3 +71,5 @@ template<class T>
 bool GenStack<T>::isFull(){
   return(top == (maxSize-1));
 }
+
+template class GenStack<Transaction>;

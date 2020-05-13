@@ -14,7 +14,8 @@ template <typename type> TreeNode<type>::TreeNode(int k, type o){
 }
 
 template <typename type> TreeNode<type>::~TreeNode(){
-  
+
 }
 
-template class TreeNode<char>;
+template class TreeNode<Student>;
+template class TreeNode<Faculty>;

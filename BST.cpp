@@ -15,6 +15,14 @@ template <typename type> void BST<type>::printTree(TreeNode<type>* node){
   printTree(node->right);
 }
 
+template <typename type> void BST<type>::copyTree(TreeNode<type>* node){
+  if(node == NULL)
+    return;
+  copyTree(node->left);
+  insert(node->key, node->data);
+  copyTree(node->right);
+}
+
 template <typename type> TreeNode<type>* BST<type>::getMax(){
   TreeNode<type>* curr = root;
 
@@ -172,4 +180,5 @@ template <typename type> TreeNode<type>* BST<type>::getSuccessor(TreeNode<type>*
   return successor;
 }
 
-template class BST<char>;
+template class BST<Student>;
+template class BST<Faculty>;

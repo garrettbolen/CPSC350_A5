@@ -1,4 +1,5 @@
 #include "TreeNode.h"
+
 #pragma once
 
 template <typename type> class BST{
@@ -16,6 +17,7 @@ public:
 
   TreeNode<type>* getSuccessor(TreeNode<type>* d);
   void printTree(TreeNode<type>* node);
-private:
+  void copyTree(TreeNode<type>* node);
+
   TreeNode<type>* root;
 };
