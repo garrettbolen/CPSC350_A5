@@ -1,4 +1,5 @@
 #include "Person.h"
+#include "DoublyLinkedList.h"
 //#include " "
 #include<iostream>
 
@@ -15,6 +16,7 @@ class Faculty : Person{
 
   int numAdvisees;
   string department;
+  DoublyLinkedList<int>* students;
 
   string getDepartment();
   int getNumAdvisees();

@@ -1,14 +1,14 @@
-#include <iostream>
-using namespace std;
+#include "Student.h"
+#pragma once
 
-template<class T>
-class ListNode{
-public:
-  T data;
-  ListNode<T> *next;
-  ListNode<T> *prev;
+template <typename type> class ListNode{
+  public:
+    type data;
+    ListNode* next;
+    ListNode* prev;
 
-  ListNode();
-  ListNode(int d);
-  ~ListNode();
+    ListNode();
+    ListNode(type d);
+    ~ListNode();
+
 };

@@ -1,25 +1,22 @@
 #include "ListNode.h"
+#include <cstddef>
 
-template<class T>
-ListNode<T>::ListNode(){
-  data = 0;
+template <typename type> ListNode<type>::ListNode(){
+  // data = NULL;
   next = NULL;
   prev = NULL;
 }
 
-template<class T>
-ListNode<T>::ListNode(int d){
+template <typename type> ListNode<type>::ListNode(type d){
   data = d;
   next = NULL;
+  prev = NULL;
 }
 
-template<class T>
-ListNode<T>::~ListNode(){
-  if(next != NULL){
-    next = NULL;
-    prev = NULL;
+template <typename type> ListNode<type>::~ListNode(){
 
-    delete next;
-    delete prev;
-  }
 }
+
+//This ensures Student and int list nodes will be supported
+template class ListNode<Student>;
+template class ListNode<int>;

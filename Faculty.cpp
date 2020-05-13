@@ -10,7 +10,7 @@ Faculty::Faculty(string n, int id, string l, string d){
   name = n;
   level = l;
   department = d;
-
+  students = new DoublyLinkedList<int>();
   numAdvisees = 0;
 }
 Faculty::~Faculty(){
