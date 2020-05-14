@@ -45,7 +45,7 @@ void Menu::run(){
     cin >> someID;
     if(masterStudent->search(someID)){
       int fid = masterStudent->get(someID)->data.advisorID;
-      if(fid == 0)
+      if(fid == -1)
         cout << "No advisor assigned." << endl;
       else
         masterFaculty->get(fid)->data.printInfo();
@@ -77,25 +77,19 @@ void Menu::run(){
 
     cout << "Enter the name of the student: ";
     cin >> name;
-    cout << endl;
     cout << "Enter the ID number of the student: ";
     cin >> id;
-    cout << endl;
     cout << "Enter the level of the student: ";
     cin >> level;
-    cout << endl;
     cout << "Enter the major of the student: ";
     cin >> major;
-    cout << endl;
     cout << "Enter the GPA of the student: ";
     cin >> gpa;
-    cout << endl;
     cout << "Enter the student's advisor's ID number: ";
     cin >> advisor;
-    cout << endl;
 
     if(!masterFaculty->search(advisor))
-      advisor = 0;
+      advisor = -1;
 
     Student s(name, id, level, major, gpa, advisor);
     masterStudent->insert(id, s);
@@ -120,16 +114,12 @@ void Menu::run(){
 
     cout << "Enter the name of the faculty member: ";
     cin >> name;
-    cout << endl;
     cout << "Enter the ID number of the faculty member: ";
     cin >> id;
-    cout << endl;
     cout << "Enter the level of the faculty member: ";
     cin >> level;
-    cout << endl;
     cout << "Enter the department of the faculty member: ";
     cin >> department;
-    cout << endl;
 
     Faculty f(name, id, level, department);
     masterFaculty->insert(id, f);
@@ -187,7 +177,7 @@ void Menu::run(){
   } else if(choice == 13){
     history->undo();
     cout << "Rolled back." << endl;
-    
+
   } else if(choice == 14){
     running = false;
   }
