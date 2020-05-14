@@ -15,6 +15,10 @@ Rollback::~Rollback(){
 }
 
 void Rollback::undo(){
+  if(stack->isEmpty()){
+    cout << "Nothing to undo." << endl;
+    return;
+  }
   Transaction tran = stack->pop();
   if(tran.type == "add" || tran.type == "delete"){
     undoAddDelete(tran);

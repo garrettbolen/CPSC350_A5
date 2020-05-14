@@ -27,30 +27,50 @@ void Menu::run(){
   } else if(choice == 3){
     cout << "Enter the student ID: ";
     cin >> someID;
-    masterStudent->get(someID)->data.printInfo();
+    if(masterStudent->search(someID))
+      masterStudent->get(someID)->data.printInfo();
+    else
+      cout << "Student record not found." << endl;
 
   } else if (choice == 4){
     cout << "Enter the faculty ID: ";
     cin >> someID;
-    masterFaculty->get(someID)->data.printInfo();
+    if(masterFaculty->search(someID))
+      masterFaculty->get(someID)->data.printInfo();
+    else
+      cout << "Faculty record not found." << endl;
 
   } else if(choice == 5){
     cout << "Enter the student ID: ";
     cin >> someID;
-    int fid = masterStudent->get(someID)->data.advisorID;
-    masterFaculty->get(fid)->data.printInfo();
+    if(masterStudent->search(someID)){
+      int fid = masterStudent->get(someID)->data.advisorID;
+      if(fid == 0)
+        cout << "No advisor assigned." << endl;
+      else
+        masterFaculty->get(fid)->data.printInfo();
+    }
+    else
+      cout << "Student record not found." << endl;
 
   } else if(choice == 6){
     cout << "Enter the faculty ID: ";
     cin >> someID;
-    ListNode<int>* curr = masterFaculty->get(someID)->data.students->front;
-    while(curr != NULL){
-      masterStudent->get(curr->data)->data.printInfo();
-      cout << endl;
-      curr = curr->next;
+    if(masterFaculty->search(someID)){
+      ListNode<int>* curr = masterFaculty->get(someID)->data.students->front;
+      while(curr != NULL){
+        masterStudent->get(curr->data)->data.printInfo();
+        cout << endl;
+        curr = curr->next;
+      }
     }
+    else
+      cout << "Faculty record not found." << endl;
 
   } else if(choice == 7){
+    Transaction t("add", "student", masterStudent);
+    history->addTransaction(t);
+
     string name = "", level = "", major = "";
     int id = 0, advisor = 0;
     double gpa = 0.0;
@@ -74,15 +94,27 @@ void Menu::run(){
     cin >> advisor;
     cout << endl;
 
+    if(!masterFaculty->search(advisor))
+      advisor = 0;
+
     Student s(name, id, level, major, gpa, advisor);
     masterStudent->insert(id, s);
 
   } else if(choice == 8){
+    Transaction t("delete", "student", masterStudent);
+    history->addTransaction(t);
+
     cout << "To delete a student, enter the student's ID: ";
     cin >> someID;
-    masterStudent->deleteNode(someID);
+    if(masterStudent->search(someID))
+      masterStudent->deleteNode(someID);
+    else
+      cout << "Student record not found." << endl;
 
   } else if(choice == 9){
+    Transaction t("add", "faculty", masterFaculty);
+    history->addTransaction(t);
+
     string name = "", level = "", department = "";
     int id = 0;
 
@@ -103,16 +135,59 @@ void Menu::run(){
     masterFaculty->insert(id, f);
 
   } else if(choice == 10){
+    Transaction t("delete", "faculty", masterFaculty);
+    history->addTransaction(t);
+
     cout << "To delete a faculty member, enter their ID: ";
     cin >> someID;
-    masterFaculty->deleteNode(someID);
+    if(masterFaculty->search(someID))
+      masterFaculty->deleteNode(someID);
+    else
+      cout << "Faculty record not found." << endl;
 
   } else if(choice == 11){
+    int newID = 0;
+
+    cout << "To change a student's advisor, enter the student's ID: ";
+    cin >> someID;
+    if(masterStudent->search(someID)){
+      Transaction t("change", "student", someID, masterStudent->get(someID)->data.advisorID);
+      history->addTransaction(t);
+
+      cout << "Enter the ID of the new advisor: ";
+      cin >> newID;
+      if(masterFaculty->search(newID))
+        masterStudent->get(someID)->data.advisorID = newID;
+      else
+        cout << "Advisor not found." << endl;
+    }
+    else
+      cout << "Student record not found." << endl;
 
   } else if(choice == 12){
+    int removeID = 0;
+
+    cout << "To remove an advisee, enter the faculty's ID: ";
+    cin >> someID;
+    if(masterFaculty->search(someID)){
+      cout << "Enter the ID of the new advisor: ";
+      cin >> removeID;
+      if(masterStudent->search(removeID)){
+        Transaction t("change", "faculty", removeID, someID);
+        history->addTransaction(t);
+
+        masterFaculty->get(someID)->data.students->remove(removeID);
+      }
+      else
+        cout << "Advisee not found." << endl;
+    }
+    else
+      cout << "Faculty record not found." << endl;
 
   } else if(choice == 13){
-
+    history->undo();
+    cout << "Rolled back." << endl;
+    
   } else if(choice == 14){
     running = false;
   }

@@ -107,33 +107,33 @@ template <typename type> type DoublyLinkedList<type>::removeFront(){
 //   return temp;
 // }
 //
-// template <typename type> type DoublyLinkedList<type>::remove(type value){
-//   ListNode<type>* curr = front;
-//
-//   while(curr->data != value){
-//     curr = curr->next;
-//     if(curr == NULL)
-//       return -1;
-//   }
-//   //if we make it here, then we found the value and must delete it
-//   if(curr == front){
-//     front = curr->next;
-//   }
-//
-//   else if(curr == back){
-//     back = curr->prev;
-//   }
-//   else{
-//     curr->prev->next = curr->next;
-//   }
-//   curr->next = NULL;
-//   curr->prev = NULL;
-//   type temp = curr->data;
-//   size--;
-//   delete curr;
-//   return temp;
-// }
-//
+template <typename type> type DoublyLinkedList<type>::remove(type value){
+  ListNode<type>* curr = front;
+
+  while(curr->data != value){
+    curr = curr->next;
+    if(curr == NULL)
+      return -1;
+  }
+  //if we make it here, then we found the value and must delete it
+  if(curr == front){
+    front = curr->next;
+  }
+
+  else if(curr == back){
+    back = curr->prev;
+  }
+  else{
+    curr->prev->next = curr->next;
+  }
+  curr->next = NULL;
+  curr->prev = NULL;
+  type temp = curr->data;
+  size--;
+  delete curr;
+  return temp;
+}
+
 template <typename type> type DoublyLinkedList<type>::peek(){
   return front->data;
 }
