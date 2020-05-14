@@ -5,8 +5,8 @@ Faculty::Faculty(){
 }
 
 Faculty::Faculty(string n, int id, string l, string d){
-  idNum = id;
   name = n;
+  idNum = id;
   level = l;
   department = d;
   students = new DoublyLinkedList<int>();
@@ -25,5 +25,5 @@ void Faculty::printInfo(){
 }
 
 void Faculty::printAdvisees(){
-  
+
 }

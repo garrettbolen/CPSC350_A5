@@ -6,7 +6,8 @@ class Student : Person {
 public:
   Student(); //default
   Student(string n, int id, string l, string m, double g, int a); //overloaded
-  ~Student(); //deconstructor
+  Student(const Student& stud); //copy constructor
+  ~Student(); //destructor
 
   string major;
   double gpa;

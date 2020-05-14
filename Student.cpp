@@ -16,6 +16,15 @@ Student::Student(string n, int id, string l, string m, double g, int a){
   advisorID = a;
 }
 
+Student::Student(const Student& stud){
+  name = stud.name;
+  idNum = stud.idNum;
+  level = stud.level;
+  major = stud.major;
+  gpa = stud.gpa;
+  advisorID = stud.advisorID;
+}
+
 Student::~Student(){
   // deconstructor
 }

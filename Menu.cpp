@@ -20,21 +20,26 @@ void Menu::run(){
   //else if statements for choice
   if(choice == 1){
     masterStudent->printTree(masterStudent->root);
+
   } else if(choice == 2){
     masterFaculty->printTree(masterFaculty->root);
+
   } else if(choice == 3){
     cout << "Enter the student ID: ";
     cin >> someID;
     masterStudent->get(someID)->data.printInfo();
+
   } else if (choice == 4){
     cout << "Enter the faculty ID: ";
     cin >> someID;
     masterFaculty->get(someID)->data.printInfo();
+
   } else if(choice == 5){
     cout << "Enter the student ID: ";
     cin >> someID;
     int fid = masterStudent->get(someID)->data.advisorID;
     masterFaculty->get(fid)->data.printInfo();
+
   } else if(choice == 6){
     cout << "Enter the faculty ID: ";
     cin >> someID;
@@ -44,14 +49,70 @@ void Menu::run(){
       cout << endl;
       curr = curr->next;
     }
-  }else if(choice == 8){
+
+  } else if(choice == 7){
+    string name = "", level = "", major = "";
+    int id = 0, advisor = 0;
+    double gpa = 0.0;
+
+    cout << "Enter the name of the student: ";
+    cin >> name;
+    cout << endl;
+    cout << "Enter the ID number of the student: ";
+    cin >> id;
+    cout << endl;
+    cout << "Enter the level of the student: ";
+    cin >> level;
+    cout << endl;
+    cout << "Enter the major of the student: ";
+    cin >> major;
+    cout << endl;
+    cout << "Enter the GPA of the student: ";
+    cin >> gpa;
+    cout << endl;
+    cout << "Enter the student's advisor's ID number: ";
+    cin >> advisor;
+    cout << endl;
+
+    Student s(name, id, level, major, gpa, advisor);
+    masterStudent->insert(id, s);
+
+  } else if(choice == 8){
     cout << "To delete a student, enter the student's ID: ";
     cin >> someID;
     masterStudent->deleteNode(someID);
+
+  } else if(choice == 9){
+    string name = "", level = "", department = "";
+    int id = 0;
+
+    cout << "Enter the name of the faculty member: ";
+    cin >> name;
+    cout << endl;
+    cout << "Enter the ID number of the faculty member: ";
+    cin >> id;
+    cout << endl;
+    cout << "Enter the level of the faculty member: ";
+    cin >> level;
+    cout << endl;
+    cout << "Enter the department of the faculty member: ";
+    cin >> department;
+    cout << endl;
+
+    Faculty f(name, id, level, department);
+    masterFaculty->insert(id, f);
+
   } else if(choice == 10){
     cout << "To delete a faculty member, enter their ID: ";
     cin >> someID;
     masterFaculty->deleteNode(someID);
+
+  } else if(choice == 11){
+
+  } else if(choice == 12){
+
+  } else if(choice == 13){
+
   } else if(choice == 14){
     running = false;
   }
